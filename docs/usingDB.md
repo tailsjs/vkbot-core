@@ -15,15 +15,15 @@ module.exports = {
   func: async(msg, { db }) => {
     if (!msg.fwds[0]) return msg.error('Перешлите сообщение того, кому хотите выдать права');
     
-    const vkid = msg.fwds[0].from_id
-    const right = msg.text.split(' ')[1];
+    const vkid = msg.fwds[0].senderId
+    const rights = msg.text.split(' ')[1];
     if (!rights) return msg.error('Укажите какое право выдать');
     
     let user = await db.getUser(vkid);
-    user.right = right;
+    user.rights = rights;
     db.write();
     
-    msg.ok(`Пользователю [id${user.id}|${user.nick}] успешно выдано ${right} право`);
+    msg.ok(`Пользователю [id${user.id}|${user.nick}] успешно выдано ${rights} право`);
   },
   rights: 3,
   help: 'права [номер]',
@@ -43,16 +43,16 @@ if (!msg.fwds[0]) return msg.error('Перешлите сообщение тог
 #
 ```js
 const vkid = msg.fwds[0].from_id
-const right = msg.text.split(' ')[1];
+const rights = msg.text.split(' ')[1];
 if (!rights) return msg.error('Укажите какое право выдать');
 ```
 Создали переменную vkid, содержащую айди человка, чьё сообщение переслали.<br>
-Создали переменную right, содержащую право, которое мы указали (от 0 до 3, где 0 - пользователь, 1 - вип, 2 - админ, 3 - создатель).<br>
+Создали переменную rights, содержащую право, которое мы указали (от 0 до 3, где 0 - пользователь, 1 - вип, 2 - админ, 3 - создатель).<br>
 Проверили наличие указанного нами права, если не найдено, то возвращаем сообщение с "ошибкой".
 #
 ```js
 let user = await db.getUser(vkid);
-user.right = right;
+user.rights = rights;
 db.write();
 ```
 Самое интересное, работа с базой данных.<br>
@@ -61,7 +61,7 @@ db.write();
 Сохранили базу данных.
 #
 ```js
-msg.ok(`Пользователю [id${user.id}|${user.nick}] успешно выдано ${right} право`);
+msg.ok(`Пользователю [id${user.id}|${user.nick}] успешно выдано ${rights} право`);
 ```
 Отправили сообщение об успешно выполненой функции.
 # Полезная информация
