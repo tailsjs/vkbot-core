@@ -7,6 +7,7 @@
 ```js
 db.defaults({ users: [] }).write();
 ```
+#
 После неё вставляем следующую строку:
 ```js
 db.defaults({ cityes: [] }).write(); // Вы можете сменить cityes на что-то другое
@@ -48,6 +49,7 @@ db.getCity = async(ID) => {
   return city;
 };
 ```
+#
 Разберём
 ```js
 db.getCity = async(ID) => {
@@ -68,7 +70,7 @@ if (!city) {
 db.get('cityes').push({
 ```
 Вставляем информацию о пользователе.
-*
+#
 ```js
 id: ID
       // Переменные, о них потом.
