@@ -3,6 +3,7 @@ module.exports = {
   func: async(msg, { botN, cmds }) => {
     let result = [
       `Команды бота ${botN}.`,
+      `Версия бота: v` + `${cmds.length}`.split('').join('.'),
       ``,
       `&#128313; Команды для Пользователей &#128313;`,
       cmds
