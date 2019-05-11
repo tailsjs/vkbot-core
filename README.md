@@ -11,4 +11,4 @@
 
 [Создатель оригинальной версии:](https://vk.com/fakeman.cat_fmc)
 
-[Создатель PLUS версии:] (https://vk.com/tailsjs)
+[Создатель PLUS версии:](https://vk.com/tailsjs)
