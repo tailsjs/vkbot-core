@@ -2,9 +2,9 @@ const kindOf = require('kind-of');
 
 module.exports = {
   regexp: /^(а?жс+)/i,
-  func: async(msg, { botN, vk, cmds, db }) => {
-    const form = msg.text.split(' ').slice(1).join(' ');
-    let code = msg.text.split(' ').slice(2).join(' ');
+  func: async(msg, { botN, vk, cmds, db, config }) => {
+    const form = msg.text.split(' ').slice(0, 1).join(' ');
+    let code = msg.text.split(' ').slice(1).join(' ');
 
     if (/^[аa]/i.test(form)) code = `(async () => { ${code} })()`;
 

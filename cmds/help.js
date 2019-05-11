@@ -24,7 +24,7 @@ module.exports = {
       .filter(cmd => cmd.rights == 3)
       .map(cmd => `[&#128312;] ${botN}, ${cmd.help} -- ${cmd.desc}`).join('\n') || '[&#128312;] Нет команд для Создателя',
       ``,
-      `&#128203; | Бот основан на ядре от [id236908027|Fakeman Cat]`
+      `&#128203; | Бот основан на ядре от [id236908027|Fakeman Cat] (PLUS VERSION)`
     ].join('\n');
     msg.ok(result);
   },
