@@ -1,6 +1,6 @@
 module.exports = {
   regexp: /^(к[оа]н[сз]о[лсз]ь|кмд)/i,
-  func: async(msg, { botN, vk, cmds, db, config }) => {
+  func: async(msg) => {
     const cmd = msg.text.split(" ").slice(1).join(" ")
 	if(!cmd)return msg.error(`Нет команды!`)
 try{
