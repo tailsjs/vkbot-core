@@ -8,10 +8,13 @@ module.exports = {
 
         user.ban.isBanned = false;
         user.ban.reason = "";
+        user.warns = 0
         db.write();
 
         msg.ok(`Пользователь [id${user.id}|${user.nick}] успешно разбанен`);
-        msg.warn(`Вас разблокировал ${msg.rights[msg.user.rights]} ${msg.user.nick}`)
+        msg.warn(`Вас разблокировал ${msg.rights[msg.user.rights]} ${msg.user.nick}`, {
+			user_id: ID
+		})
     },
     rights: 2, // Команда для Админов и выше
     help: 'разбан [айди]',
