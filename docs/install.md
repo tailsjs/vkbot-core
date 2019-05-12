@@ -6,11 +6,17 @@
 3. Открыть командную строку Windows
 4. Ввести: cd полный\путь\до\папки. Например: C:\Users\Fakeman Cat\Desktop\vkbot-core-plus-master
 5. Ввести следующее по очереди: 
-# npm i vk-io
-# npm i colors
-# npm i fs
-# npm i lowdb
-# npm i kind-of
+
+ npm i vk-io
+
+ npm i colors
+ 
+ npm i fs
+ 
+ npm i lowdb
+ 
+ npm i kind-of
+ 
 6. Ввести node start
 
 #### Ubuntu (VDS/VPS):
@@ -50,5 +56,6 @@
 
 Если всё верно, то в командную строку выдаст: "Бот на ядре Fakeman Cat (PLUS VERSION) успешно запущен. Введите команду боту в ВК: (Имя бота), тест"
 Если выдало ошибку или бот не запустился. То пишите мне об этом в [ЛС](https://vk.com/im?sel=236908027)
+Или [создателю PLUS версии](https://vk.com/tailsjs)
 
-Для выключения бота нужно зажать сочитание клавиш CTRL + C или CTRL + Z
+#### Для выключения бота нужно зажать сочитание клавиш CTRL + C или CTRL + Z
