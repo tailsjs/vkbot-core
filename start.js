@@ -91,6 +91,7 @@ vk.updates.on(['new_message', 'edit_message'], async(msg) => {
   msg.user = await db.getUser(msg.senderId); // Переменная содержащая в себе информацию о пользователе из базы
   msg.fwds = msg.forwards || []; // Просто упрощение..
   msg.rights = ["Пользователь", "Вип", "Админ", "Создатель"] // Тоже упрощение
+  msg.atch = msg.attachments || []; // Упрощаем аттачманты
   // PayLoad клавиатуры
   if (msg.messagePayload) {
   msg.text = msg.messagePayload.command
