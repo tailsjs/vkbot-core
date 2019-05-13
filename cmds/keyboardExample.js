@@ -4,7 +4,7 @@ module.exports = {
   tag: ["клавиатура"], // Отклик на "клавиатура"
   func: function(msg) { // Подключаем функции
 	  let type = msg.text.split(' ').slice(1).join(' ') // Создаём переменную с текстом
-	  if(!type){ // Нет текста?
+	  if(!type || type != "testWorks"){ // Нет текста? Или текст не testWorks?
     let { Keyboard } = require('vk-io'); // Извлекаем keyboard из модуля vk-io 
 
  let kb = Keyboard // Делаем пеерменную с клавиатурой
