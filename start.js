@@ -1,11 +1,27 @@
 // Модули
+try{
 const { VK } = require('vk-io');
+}catch(e){
+console.error(`У вас отсутствует модуль 'VK-IO'`)
+}
 const vk = new VK();
+try{
 const fs = require('fs');
+}catch(e){
+console.error(`У вас отсутствует модуль 'fs'`)	
+}
+try{
 const colors = require('colors');
+}catch(e){
+console.error(`У вас отсутствует модуль 'colors'`)	
+}
 const config = require("./config.js");
 // database
+try{
 const low = require('lowdb');
+}catch(e){
+console.error(`У вас отсутствует мудль 'lowdb'`)	
+}
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('database/db.json');
 const db = low(adapter);
