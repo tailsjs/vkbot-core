@@ -64,7 +64,7 @@ if (config.group_id > 0 || config.group_id != 0) {
 else {
   vk.setToken(config.token);
 }
-if(config.owner == 0)return console.error(`Вы не указали ID создателя!`.red_bold)
+if(config.owner == 0)return console.error(`Вы не указали ID создателя!`.red.bold)
 // Определяем имя бота
 let botN = '';
 if (!config.botNameString || config.botNameString == '') {
