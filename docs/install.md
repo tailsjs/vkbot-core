@@ -5,17 +5,9 @@
 4. Настроить конфигурации для бота. Всё нужное закомментированно в самом файле config.js
 3. Открыть командную строку Windows
 4. Ввести: cd полный\путь\до\папки. Например: C:\Users\Fakeman Cat\Desktop\vkbot-core-plus-master
-5. Ввести следующее по очереди: 
+5. Ввести следующее: 
 
- npm i vk-io
-
- npm i colors
- 
- npm i fs
- 
- npm i lowdb
- 
- npm i kind-of
+ npm i vk-io kind-of colors fs lowdb
  
 6. Ввести node start
 
