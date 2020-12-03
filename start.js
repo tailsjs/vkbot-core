@@ -1,32 +1,14 @@
 // Модули
-try{
 var { VK } = require('vk-io');
-}catch(e){
-console.error(`У вас отсутствует модуль 'VK-IO'`)
-}
 var vk = new VK();
-try{
 var fs = require('fs');
-}catch(e){
-console.error(`У вас отсутствует модуль 'fs'`)	
-}
-try{
 var colors = require('colors');
-}catch(e){
-console.error(`У вас отсутствует модуль 'colors'`)	
-}
 const config = require("./config.js");
 // database
-try{
-var low = require('lowdb');
-}catch(e){
-console.error(`У вас отсутствует мудль 'lowdb'`)	
-}
+var low = require('lowdb');	
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('database/db.json');
 const db = low(adapter);
-
-db.defaults({ users: [] }).write();
 
 db.getUser = async(ID, msg) => {
   let user = db.get('users').find({ id: ID }).value();
