@@ -1,14 +1,16 @@
 // Модули
-var { VK } = require('vk-io');
-var vk = new VK();
-var fs = require('fs');
-var colors = require('colors');
+const { VK } = require('vk-io');
+const vk = new VK();
+const fs = require('fs');
+const colors = require('colors');
 const config = require("./config.js");
 // database
-var low = require('lowdb');	
+const low = require('lowdb');	
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('database/db.json');
 const db = low(adapter);
+
+db.defaults({ users: [] }).write();
 
 db.getUser = async(ID, msg) => {
   let user = db.get('users').find({ id: ID }).value();
