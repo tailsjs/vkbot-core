@@ -11,11 +11,11 @@ module.exports = {
         db.write();
 
         msg.ok(`Вы успешно убрали у пользователя [id${user.id}|${user.nick}] предупреждение!`);
-        msg.warn(`У вас забрал предупреждение ${msg.rights[msg.user.rights]} ${msg.user.nick}`, {
+        msg.warn(`${msg.rights[msg.user.rights]} ${msg.user.nick} убрал у вас предупреждение`, {
 		user_id: ID
 	})
     },
     rights: 2, // Команда для Админов и выше
     help: 'разварн [айди]',
-    desc: 'разварнить пользователя'
+    desc: 'убрать у пользователя предупреждение'
 };
