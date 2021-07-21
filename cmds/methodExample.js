@@ -21,14 +21,14 @@ module.exports = {
         const deactivated = user[0].deactivated;
         
         //Если переменная deactivated это deleted то возвращаем сообщение с ошибкой "Пользователь удалён с серверов ВКонтакте!" 
-        if(deactivated === "deleted")return msg.error(`Пользователь удалён с серверов ВКонтакте!`)
+        if(deactivated === "deleted")return msg.error(`Пользователь удалён с серверов ВКонтакте!`);
         
         // Отправляем сообщение с нашими готовыми переменными
         msg.answer([
             `Имя: ${name}`,
             `Фамилия: ${lastName}`,
             `Статус: ${status ? status : 'Не указан'}`,
-            `Айди: ${id}`
+            `ID: ${id}`
         ].join('\n'));
         
     },
