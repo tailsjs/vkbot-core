@@ -90,28 +90,26 @@ vk.updates.on(['new_message', 'edit_message'], async(msg) => {
   msg.text = msg.text.replace(config.botName, ''); // Текст сообщения равен тексту без имени бота: Кот, привет => привет
   msg.user = await db.getUser(msg.senderId); // Переменная содержащая в себе информацию о пользователе из базы
   msg.fwds = msg.forwards || []; // Просто упрощение..
-  msg.rights = ["Пользователь", "Вип", "Админ", "Создатель"] // Тоже упрощение
-  msg.atch = msg.attachments || []; // Упрощаем аттачманты
+  msg.rights = ["Пользователь", "Вип", "Админ", "Создатель"]; // Тоже упрощение
+  msg.atch = msg.attachments || []; // Упрощаем вложения
   // PayLoad клавиатуры
-  if (msg.messagePayload) {
-  msg.text = msg.messagePayload.command
-  } 
+  if (msg.messagePayload)msg.text = msg.messagePayload.command
+  
   // Определяем команду по regexp или tag.
   let cmd = cmds.find(cmd => cmd.regexp ? cmd.regexp.test(msg.text) : (new RegExp(`^\\s*(${cmd.tag.join('|')})`, "i")).test(msg.text));
   if (!cmd && config.settings.sendEmptyCommand) return msg.send('&#128213; | Команда не найдена!'); // Если нет команды и в настройках включена отправка сообщения о том, что нет команды, то отправляем сообщение с тем, что нет команды
   if (!cmd && config.settings.sendEmptyCommand == false)return; // Если нет команды и в настройках выключена отправка сообщения о том, что нет команды, то ничего не отправляем.
   // Функции "отправлялки" сообщений
   if(config.settings.showRightIcons){
-  msg.answer = (text = "", params = {}) => {
-    const result = msg.isChat ? `${config.rightIcons[msg.user.rights]} ${msg.user.nick},\n${text}` : `${text}`;
-    return msg.send(result, params);
-  }
-  }
-  if(!config.settings.showRightIcons){
-	 msg.answer = (text = "", params = {}) => {
-    const result = `${text}`;
-    return msg.send(result, params);
-  } 
+  	msg.answer = (text = "", params = {}) => {
+    		const result = msg.isChat ? `${config.rightIcons[msg.user.rights]} ${msg.user.nick},\n${text}` : `${text}`;
+    		return msg.send(result, params);
+  	}
+  }else{
+	msg.answer = (text = "", params = {}) => {
+    		const result = `${text}`;
+    		return msg.send(result, params);
+  	} 
   }
   msg.ok = (text = "", params = {}) => {
     return msg.answer('&#128215; | ' + text, params);
@@ -138,21 +136,18 @@ vk.updates.on(['new_message', 'edit_message'], async(msg) => {
   catch (e) {
     console.log(`Ошибка:\n${e}`.red.bold);
 	if(!config.settings.showErrorsUser){
-	if(msg.user.rights < 3){
-	msg.error(`Произошла ошибка, о которой уже сообщено создателю.`)
-    msg.error(`Ошибка при выполнении команды '${msg.text}'\nКод ошибки: ${e}`, {
-		user_id: config.owner
-	});
-	}
-		if(msg.user.rights == 3){
-	  msg.error(`Ошибка: ${e}`)
-  }
-	}
-	if(config.settings.showErrorsUser){
+		if(msg.user.rights < 3){
+			msg.error(`Произошла ошибка, о которой уже сообщено создателю.`);
+    			msg.error(`Ошибка при выполнении команды '${msg.text}'\nКод ошибки: ${e}`, {
+				user_id: config.owner
+			});
+		}else{
+	  		msg.error(`Ошибка: ${e}`)
+  		}
+	}else{
 		msg.error(`Ошибка: ${e}`)
 	}
-	}
-  
+} 
 });
 
 // Консолим ошибки
